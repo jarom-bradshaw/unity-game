@@ -11,6 +11,8 @@ namespace Character
 
         [SerializeField] public PlayerSettingsSO playerSettingsIn;
         private PlayerSettings _playerSettings;
+        
+        [SerializeField] private float characterHeight = 2f;
 
         private void Awake()
         {
@@ -25,14 +27,14 @@ namespace Character
             _healthComponent.SetMaxHealth(_playerSettings.Health);
         }
 
-        public void Update()
+        public void FixedUpdate()
         {
             var movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
             if (movement.magnitude <= float.Epsilon)
                 _movementComponent.DampenMotion2D(0.8f);
             
-            _movementComponent.Move2D(movement * (_playerSettings.Speed * Time.deltaTime * 100));
+            _movementComponent.Move2D(movement * (_playerSettings.Speed * Time.fixedDeltaTime * 100));
         }
     }
 }

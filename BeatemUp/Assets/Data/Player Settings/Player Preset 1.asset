@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player Preset 1
   m_EditorClassIdentifier: 
   Health: 200
-  Speed: 6
+  Speed: 4
   Damage: 10
