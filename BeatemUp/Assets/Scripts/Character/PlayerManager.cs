@@ -12,8 +12,6 @@ namespace Character
         [SerializeField] public PlayerSettingsSO playerSettingsIn;
         private PlayerSettings _playerSettings;
         
-        [SerializeField] private float characterHeight = 2f;
-
         private void Awake()
         {
             _healthComponent = GetComponent<HealthComponent>();
@@ -32,7 +30,10 @@ namespace Character
             var movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
             if (movement.magnitude <= float.Epsilon)
+            {
                 _movementComponent.DampenMotion2D(0.8f);
+                return;
+            }
             
             _movementComponent.Move2D(movement * (_playerSettings.Speed * Time.fixedDeltaTime * 100));
         }

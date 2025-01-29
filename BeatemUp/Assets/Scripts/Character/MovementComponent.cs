@@ -2,23 +2,16 @@ using UnityEngine;
 
 namespace Character
 {
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody), typeof(CharacterAnimationComponent))]
     public class MovementComponent : MonoBehaviour
     {
-        [SerializeField] private Rigidbody rb;
+        private Rigidbody _rb;
+        private CharacterAnimationComponent _animationController;
 
         private void Awake()
         {
-            rb = GetComponent<Rigidbody>();
-        }
-
-        /// <summary>
-        /// Moves the game object, setting its linear velocity
-        /// </summary>
-        /// <param name="movement"></param>
-        public void Move(Vector3 movement)
-        {
-            rb.linearVelocity = movement;
+            _rb = GetComponent<Rigidbody>();
+            _animationController = GetComponent<CharacterAnimationComponent>();
         }
 
         /// <summary>
@@ -27,17 +20,13 @@ namespace Character
         /// <param name="movement"></param>
         public void Move2D(Vector2 movement)
         {
-            var currY = rb.linearVelocity.y;
-            rb.linearVelocity = new Vector3(movement.x, currY, movement.y);
-        }
+            var currY = _rb.linearVelocity.y;
+            _rb.linearVelocity = new Vector3(movement.x, currY, movement.y);
 
-        /// <summary>
-        /// Dampens the velocity of the game object
-        /// </summary>
-        /// <param name="damping">Damping value. Clamped between 0 and 1</param>
-        public void DampenMotion(float damping)
-        {
-            rb.linearVelocity *= Mathf.Clamp01(damping);
+            if (Mathf.Abs(movement.x) <= float.Epsilon)
+                return;
+            
+            _animationController.FaceDirection(movement);
         }
 
         /// <summary>
@@ -47,10 +36,10 @@ namespace Character
         public void DampenMotion2D(float damping)
         {
             damping = Mathf.Clamp01(damping);
-            rb.linearVelocity = new Vector3(
-                rb.linearVelocity.x * damping, 
-                rb.linearVelocity.y, 
-                rb.linearVelocity.z * damping
+            _rb.linearVelocity = new Vector3(
+                _rb.linearVelocity.x * damping, 
+                _rb.linearVelocity.y, 
+                _rb.linearVelocity.z * damping
             );
         }
     }
