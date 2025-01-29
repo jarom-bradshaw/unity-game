@@ -16,9 +16,9 @@ MonoBehaviour:
   description: 
   Attack: 5
   Damage: 0
-  Speed: 9
+  Speed: 7
   range: 2
-  attackDelay: 0
+  attackDelay: 1
   knockback: 1
   critChance: 8
   critMultiplier: 4

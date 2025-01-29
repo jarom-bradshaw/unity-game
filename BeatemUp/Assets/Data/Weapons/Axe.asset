@@ -18,7 +18,7 @@ MonoBehaviour:
   Damage: 0
   Speed: 2
   range: 8
-  attackDelay: 0
+  attackDelay: 7
   knockback: 7
   critChance: 5
   critMultiplier: 9

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Heavy Hammer
   description: 
-  Attack: 8
+  Attack: 9
   Damage: 0
   Speed: 2
   range: 5
-  attackDelay: 0
+  attackDelay: 8
   knockback: 9
   critChance: 3
   critMultiplier: 7

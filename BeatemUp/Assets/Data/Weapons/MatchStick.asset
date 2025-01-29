@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb59c9f66448034a9635b681e26ca20, type: 3}
   m_Name: MatchStick
   m_EditorClassIdentifier: 
-  weaponName: 
+  weaponName: Match Stick
   description: 
-  Attack: 0
+  Attack: 10
   Damage: 0
-  Speed: 0
-  range: 0
-  attackDelay: 0
-  knockback: 0
-  critChance: 0
-  critMultiplier: 2
+  Speed: 10
+  range: 10
+  attackDelay: 1
+  knockback: 10
+  critChance: 10
+  critMultiplier: 10
   weaponType: 0
   meleeAttackType: 0
   usesAmmo: 0
