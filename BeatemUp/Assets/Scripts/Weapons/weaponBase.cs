@@ -23,20 +23,8 @@ namespace Weapon
         [Header("Attack Behavior")]
         public WeaponType weaponType;
         // If Melee...
-        public MeleeAttackType meleeAttackType;
-        // If Ranged...
-        public bool usesAmmo;
-        public int magazineSize;
-        public float reloadTime;
-        public AmmoType ammoType;
-        public RangedAttackType rangedAttackType;
+        //public MeleeAttackType meleeAttackType;
 
-        [Header("Visual / Audio / Effects")]
-        //public Texture2D weaponTexture; // your 2D texture if needed
-        public Sprite icon;
-        public GameObject weaponPrefab;
-        public AudioClip attackSFX;
-        public AudioClip reloadSFX;
 
         [Header("Misc")]
         public bool hasSecondaryAttack;
@@ -53,12 +41,7 @@ namespace Weapon
                 Knockback = knockback,
                 CritChance = critChance,
                 CritMultiplier = critMultiplier,
-                WeaponType = weaponType,
-                UsesAmmo = usesAmmo,
-                MagazineSize = magazineSize,
-                ReloadTime = reloadTime,
-                AmmoType = ammoType,
-                HasSecondaryAttack = hasSecondaryAttack,
+                //WeaponType = weaponType,
             };
         }
     }
@@ -67,48 +50,9 @@ namespace Weapon
     public enum WeaponType // Is this descriptive enough. Should we add more types?
     {
         Melee,
-        Ranged,
-        Magic
-    }
-
-    public enum AmmoType
-    {
-        None,
-        Bullets,
-        Arrows,
-        Energy
-    }
-
-    public enum MeleeAttackType
-    {
-        None,
-        LightSlash,
-        HeavySlash,
-        LightStab,
-        HeavyStab,
-        LightSlam,
-        HeavySlam,
-        Spin,
-        RisingAttack,
-        LeapingAttack,
-        DashAttack,
-        Block,
-        Parry,
-        Special
-    }
-
-    public enum RangedAttackType
-    {
-        None,
-        SingleShot,
-        Burst,
-        Spray,
-        Charge,
-        Snipe,
-        AOE,
-        Grenade,
-        Rocket,
-        Special
+        Axe,
+        Spear,
+        MatchStick,
     }
 
     [System.Serializable]
@@ -122,13 +66,5 @@ namespace Weapon
         public float Knockback;
         public float CritChance;
         public float CritMultiplier;
-
-        public WeaponType WeaponType;
-        public bool UsesAmmo;
-        public int MagazineSize;
-        public float ReloadTime;
-        public AmmoType AmmoType;
-
-        public bool HasSecondaryAttack;
     }
 }
