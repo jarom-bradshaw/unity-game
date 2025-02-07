@@ -22,8 +22,8 @@ namespace Character
         private void Start()
         {
             // settings health
-            _maxHealth = playerSettings.Health;
-            _health = playerSettings.Health;
+            _maxHealth = playerSettings.health;
+            _health = playerSettings.health;
         }
 
         private void FixedUpdate()
@@ -46,7 +46,7 @@ namespace Character
             }
             else
             {
-                Move2D(movement * (playerSettings.Speed * delta * 100));
+                Move2D(movement * (playerSettings.speed * delta * 100));
                 _animations.PlayAnimation("CharacterRun");
             }
         }
