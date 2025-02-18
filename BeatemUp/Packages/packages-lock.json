@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.gameframe.sqlite": {
+      "version": "https://github.com/coryleach/UnitySQLite.git#1.0.2",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d05b5c777582ae27bd33dd940952c596a57d970a"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.5",
       "depth": 0,
