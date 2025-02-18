@@ -45,7 +45,9 @@ public class DatabaseManager : MonoBehaviour
                 CREATE TABLE IF NOT EXISTS players (
                     player_id INTEGER PRIMARY KEY, 
                     name TEXT, 
-                    HEALTH INT DEFAULT (100), 
+                    health INT DEFAULT (100), 
+                    weapons_id INT,
+                    save_states_id INT,
                     FOREIGN KEY (weapons_id) REFERENCES weapons (weapons_id), 
                     FOREIGN KEY (save_states_id) REFERENCES save_states (save_states_id)
                 );";
