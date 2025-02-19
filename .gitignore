@@ -75,3 +75,5 @@ crashlytics-build.properties
 
 # Local files we want to ignore (tools and such)
 /_[Ll]ocal/
+BeatemUp/Assets/Scenes/_TestScene.unity.meta
+BeatemUp/Assets/Scenes/_TestScene.unity
