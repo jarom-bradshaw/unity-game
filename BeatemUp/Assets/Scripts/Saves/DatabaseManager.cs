@@ -9,15 +9,18 @@ public class DatabaseManager : MonoBehaviour
 
     void Start()
     {
+        // Define the database path and log it for debugging
         dbPath = "URI=file:" + Application.persistentDataPath + "/GameDatabase.db";
         Debug.Log("Database path: " + dbPath);
 
+        // Initialize database tables
         CreateSaveStatesTable();
         CreateWeaponsTable();
         CreatePlayersTable();
 
     }
 
+    // Creates the save_states table if it doesn't exist
     private void CreateSaveStatesTable()
     {
         using (var connection = new SqliteConnection(dbPath))
@@ -38,6 +41,7 @@ public class DatabaseManager : MonoBehaviour
         Debug.Log("save_states table created successfully");
     }
 
+    // Creates the players table if it doesn't exist
     private void CreatePlayersTable()
     {
         using (var connection = new SqliteConnection(dbPath))
@@ -60,6 +64,7 @@ public class DatabaseManager : MonoBehaviour
         Debug.Log("players table created successfully");
     }
 
+    // Creates the weapons table if it doesn't exist
     private void CreateWeaponsTable()
     {
         using (var connection = new SqliteConnection(dbPath))
@@ -77,6 +82,7 @@ public class DatabaseManager : MonoBehaviour
         Debug.Log("weapons table created successfully");
     }
 
+    // Retrieves save data for a given save slot
     public SaveData GetSaveData(int saveSlot)
     {
         SaveData saveData = null;
@@ -85,7 +91,7 @@ public class DatabaseManager : MonoBehaviour
         {
             connection.Open();
 
-            // Get the location
+            // Query to retrieve game location for the save slot
             string locationQuery = @"
             SELECT game_location FROM save_states 
             WHERE save_slot = @saveSlot
@@ -107,7 +113,7 @@ public class DatabaseManager : MonoBehaviour
                 }
             }
 
-            // Get all players for the save slot
+            // Query to retrieve players and their weapons for the save slot
             string playerQuery = @"
             SELECT p.player_id, p.name, p.HEALTH, w.weapon_name 
             FROM players p
@@ -135,7 +141,7 @@ public class DatabaseManager : MonoBehaviour
         return saveData;
     }
 
-    
+    // Saves game data, replacing any existing data for the given save slot
     public void SaveGameData(int saveSlot, string location, List<PlayerData> players)
     {
         using (var connection = new SqliteConnection(dbPath))
