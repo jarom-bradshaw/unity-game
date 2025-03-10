@@ -33,11 +33,6 @@ public class CameraControl : MonoBehaviour
     {
         DebugClear();
 
-        MoveCamera();
-
-
-    void MoveCamera() {
-
         Vector3 targetPosition = target.position; // Player current position
         targetPosition.y = cameraY;
         targetPosition.z = cameraZ;
@@ -79,6 +74,7 @@ public class CameraControl : MonoBehaviour
             roomState = RoomTransition.Active;
         }
     }
+
     void DebugClear() {
         if (clearRoom){
             roomState = RoomTransition.Cleared;
