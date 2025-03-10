@@ -35,19 +35,9 @@ public class CameraControl : MonoBehaviour
 
         MoveCamera();
 
-        // LookAtPlayer();
-    }
 
-    void LookAtPlayer() {
-        transform.LookAt(target.position, Vector3.up);
-        Vector3 rawLookRotate = transform.rotation.eulerAngles;
-
-        rawLookRotate.y = 0;
-        rawLookRotate.z = 0;
-
-        transform.rotation = Quaternion.Euler(rawLookRotate);
-    }
     void MoveCamera() {
+
         Vector3 targetPosition = target.position; // Player current position
         targetPosition.y = cameraY;
         targetPosition.z = cameraZ;

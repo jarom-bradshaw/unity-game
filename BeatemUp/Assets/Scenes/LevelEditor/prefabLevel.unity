@@ -1357,6 +1357,7 @@ MeshFilter:
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
+
   m_Modification:
     serializedVersion: 3
     m_TransformParent: {fileID: 1164822307}
@@ -3299,6 +3300,7 @@ PrefabInstance:
     - target: {fileID: 8711147499418514564, guid: 8ffc6fe2dfb8942c794f7c8e585d7869, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.01
+
       objectReference: {fileID: 0}
     - target: {fileID: 8711147499418514564, guid: 8ffc6fe2dfb8942c794f7c8e585d7869, type: 3}
       propertyPath: m_LocalPosition.y
