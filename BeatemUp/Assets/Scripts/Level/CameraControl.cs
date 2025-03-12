@@ -20,9 +20,12 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private List<Vector2> roomLimits;
     [SerializeField] private float deadZone;
     [SerializeField] private float followMultiplier;
+    [SerializeField] private List<int> enemyCount;
 
     public RoomTransition roomState = RoomTransition.Active;
     public bool clearRoom = false;
+
+    public bool kill = false;
 
     void Start()
     {
@@ -31,7 +34,9 @@ public class CameraControl : MonoBehaviour
     }
     void FixedUpdate()
     {
-        DebugClear();
+        KillEnemy();
+        NoEnemies();
+        //DebugClear();
 
         Vector3 targetPosition = target.position; // Player current position
         targetPosition.y = cameraY;
@@ -54,10 +59,21 @@ public class CameraControl : MonoBehaviour
             targetPosition.x += deadZone;
         }
 
-        int maxRoomI = roomState switch { // changes room limit when cleared
+        int maxRoomI;
+
+        if (currRoomI < roomLimits.Count - 1) // prevents outOfIndex error
+        {
+            maxRoomI = roomState switch { // changes room limit when cleared
             RoomTransition.Cleared => currRoomI + 1,
             _ => currRoomI
-        };
+            };
+        }
+        else
+        {
+            currRoomI = roomLimits.Count - 1;
+            maxRoomI = currRoomI;
+        }
+        
 
         Vector3 smoothPosition = Vector3.SmoothDamp(cameraPosition, targetPosition, ref velocity, smoothTime / followMultiplier); // smooth movement
         var boundMax = maxRoomI >= roomLimits.Count ? roomLimits[currRoomI].y : roomLimits[maxRoomI].y; // prevents out of index
@@ -75,10 +91,24 @@ public class CameraControl : MonoBehaviour
         }
     }
 
-    void DebugClear() {
+    void KillEnemy() {
+        if (kill) {
+            if (currRoomI < enemyCount.Count)
+                enemyCount[currRoomI] -= 1;
+            kill = false;
+        }
+    }
+    void NoEnemies() {
+        if (currRoomI < enemyCount.Count)
+            if (enemyCount[currRoomI] <= 0)
+            {
+                clearRoom = true;
+            }
+    }
+    /*void DebugClear() {
         if (clearRoom){
             roomState = RoomTransition.Cleared;
             clearRoom = false;
         }
-    }
+    }*/
 }

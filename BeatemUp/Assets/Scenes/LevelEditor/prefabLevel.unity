@@ -820,12 +820,13 @@ Transform:
   m_GameObject: {fileID: 287028853}
   serializedVersion: 2
   m_LocalRotation: {x: -0.3420201, y: 0, z: -0, w: -0.9396927}
-  m_LocalPosition: {x: 7, y: 14.04, z: 29.44}
+  m_LocalPosition: {x: 7.15, y: 14.04, z: 29.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1607026347}
   - {fileID: 1321431802}
+  - {fileID: 1887252250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 40, y: -360, z: 0}
 --- !u!114 &287028858
@@ -846,11 +847,13 @@ MonoBehaviour:
   - {x: 28.22, y: 31.9}
   - {x: 48.22, y: 51.9}
   - {x: 68.22, y: 71.9}
-  - {x: 88.22, y: 93}
+  - {x: 88.22, y: 92.88}
   deadZone: 0.8
   followMultiplier: 1.5
+  enemyCount: 0300000003000000030000000300000001000000
   roomState: 0
   clearRoom: 0
+  kill: 0
 --- !u!1001 &386987759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2971,13 +2974,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887252247}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.41650438, y: 0.0032689497, z: -0.001498796, w: -0.90912664}
-  m_LocalPosition: {x: 10.188419, y: 29.688288, z: 17.673985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05348587, y: -0.055165723, z: -6.5306993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 142.683, y: -30, z: 0}
+  m_Father: {fileID: 287028857}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1976558562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 407950896783904632, guid: a34af7ed73c4e5b4181a1aded654d0b0, type: 3}
@@ -3598,6 +3601,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 287028857}
-  - {fileID: 1887252250}
   - {fileID: 1164822307}
   - {fileID: 2124033064}
