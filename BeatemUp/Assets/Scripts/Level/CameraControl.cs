@@ -36,7 +36,7 @@ public class CameraControl : MonoBehaviour
     {
         KillEnemy();
         NoEnemies();
-        //DebugClear();
+        DebugClear();
 
         Vector3 targetPosition = target.position; // Player current position
         targetPosition.y = cameraY;
@@ -105,10 +105,10 @@ public class CameraControl : MonoBehaviour
                 clearRoom = true;
             }
     }
-    /*void DebugClear() {
+    void DebugClear() {
         if (clearRoom){
             roomState = RoomTransition.Cleared;
             clearRoom = false;
         }
-    }*/
+    }
 }
