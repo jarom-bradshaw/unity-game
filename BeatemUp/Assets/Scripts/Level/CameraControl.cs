@@ -21,7 +21,6 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private float deadZone;
     [SerializeField] private float followMultiplier;
 
-
     public RoomTransition roomState = RoomTransition.Active;
     public bool clearRoom = false;
 
@@ -70,7 +69,6 @@ public class CameraControl : MonoBehaviour
             maxRoomI = currRoomI;
         }
         
-
         Vector3 smoothPosition = Vector3.SmoothDamp(cameraPosition, targetPosition, ref velocity, smoothTime / followMultiplier); // smooth movement
         var boundMax = maxRoomI >= roomLimits.Count ? roomLimits[currRoomI].y : roomLimits[maxRoomI].y; // prevents out of index
         smoothPosition.x = Mathf.Clamp(smoothPosition.x, roomLimits[currRoomI].x, boundMax); // limits camera movement at the edge of rooms
