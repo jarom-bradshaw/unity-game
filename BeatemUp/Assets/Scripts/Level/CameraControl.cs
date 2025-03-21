@@ -21,6 +21,7 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private float deadZone;
     [SerializeField] private float followMultiplier;
 
+
     public RoomTransition roomState = RoomTransition.Active;
     public bool clearRoom = false;
 

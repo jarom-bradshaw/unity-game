@@ -1082,8 +1082,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1043986532}
   roomLimits:
+  - {x: 7.15, y: 92.88}
   deadZone: 0.8
   followMultiplier: 1.5
+  enemyCount: 
   roomState: 0
   clearRoom: 0
   kill: 0
