@@ -20,12 +20,9 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private List<Vector2> roomLimits;
     [SerializeField] private float deadZone;
     [SerializeField] private float followMultiplier;
-    [SerializeField] private List<int> enemyCount;
 
     public RoomTransition roomState = RoomTransition.Active;
     public bool clearRoom = false;
-
-    public bool kill = false;
 
     void Start()
     {
@@ -34,8 +31,6 @@ public class CameraControl : MonoBehaviour
     }
     void FixedUpdate()
     {
-        KillEnemy();
-        NoEnemies();
         DebugClear();
 
         Vector3 targetPosition = target.position; // Player current position
@@ -91,20 +86,6 @@ public class CameraControl : MonoBehaviour
         }
     }
 
-    void KillEnemy() {
-        if (kill) {
-            if (currRoomI < enemyCount.Count)
-                enemyCount[currRoomI] -= 1;
-            kill = false;
-        }
-    }
-    void NoEnemies() {
-        if (currRoomI < enemyCount.Count)
-            if (enemyCount[currRoomI] <= 0)
-            {
-                clearRoom = true;
-            }
-    }
     void DebugClear() {
         if (clearRoom){
             roomState = RoomTransition.Cleared;
