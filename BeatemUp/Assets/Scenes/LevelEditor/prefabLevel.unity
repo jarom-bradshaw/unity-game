@@ -900,11 +900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1043986532}
   roomLimits:
-  - {x: 7.15, y: 11.9}
-  - {x: 28.22, y: 31.9}
-  - {x: 48.22, y: 51.9}
-  - {x: 68.22, y: 71.9}
-  - {x: 88.22, y: 92.88}
+  - {x: 7.15, y: 92.88}
   deadZone: 0.8
   followMultiplier: 1.5
   roomState: 0
@@ -3413,6 +3409,7 @@ GameObject:
   - component: {fileID: 1750701720}
   - component: {fileID: 1750701719}
   - component: {fileID: 1750701718}
+  - component: {fileID: 1750701722}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -3464,7 +3461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a6d5b19a0c2b7458c9e8a8155e0869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showMenu: 0
 --- !u!114 &1750701720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3503,6 +3499,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750701716}
   m_CullTransparentMesh: 1
+--- !u!114 &1750701722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750701716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c730c2be4187c4ea7d3882c394e632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showMenu: 0
 --- !u!4 &1782139084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 407950896783904632, guid: a34af7ed73c4e5b4181a1aded654d0b0, type: 3}
