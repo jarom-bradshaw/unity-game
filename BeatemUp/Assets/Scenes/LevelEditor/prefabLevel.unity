@@ -900,11 +900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1043986532}
   roomLimits:
-  - {x: 7.15, y: 11.9}
-  - {x: 28.22, y: 31.9}
-  - {x: 48.22, y: 51.9}
-  - {x: 68.22, y: 71.9}
-  - {x: 88.22, y: 92.88}
+  - {x: 7.15, y: 92.88}
   deadZone: 0.8
   followMultiplier: 1.5
   roomState: 0
