@@ -22,9 +22,13 @@ public class approach : MonoBehaviour
     }
     void FollowPlayer()
     {
-        Vector3 pos = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        rb.MovePosition(pos);
-        transform.LookAt(target);
+        float stoppingDistance = 1.25f;
+        if (Vector3.Distance(transform.position, target.position) > stoppingDistance)
+        {
+            Vector3 pos = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            rb.MovePosition(pos);
+            transform.LookAt(target);
+        }
     }
 
     void OnTriggerStay(Collider other)
