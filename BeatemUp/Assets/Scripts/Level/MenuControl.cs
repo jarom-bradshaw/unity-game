@@ -4,7 +4,7 @@ public class MenuControl : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
     public bool showMenu = false;
-
+    [SerializeField] private Transform target;
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -23,6 +23,10 @@ public class MenuControl : MonoBehaviour
             {
                 HidePanel();
             }
+        }
+        if (target.position.x >= 99.51)
+        {
+            ShowPanel();
         }
     }
 
