@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Newtonsoft.Json; // Make sure you've added Newtonsoft.Json to your project
+using Newtonsoft.Json;
 
 public class NoSQLDatabase
 {
@@ -12,7 +12,7 @@ public class NoSQLDatabase
     {
         public string PlayerName;
         public int Score;
-        public string Timestamp; // Store the time the score was achieved
+        public string Timestamp; 
     }
 
     private string _databaseName; // Name of the database (folder)
