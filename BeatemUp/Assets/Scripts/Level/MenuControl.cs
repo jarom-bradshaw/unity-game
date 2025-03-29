@@ -53,7 +53,24 @@ public class MenuControl : MonoBehaviour
     private IEnumerator LoadSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(0);
+
+        // Get the current active scene
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Check the current scene and load the appropriate scene
+        if (currentScene.buildIndex == 1)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else if (currentScene.buildIndex == 2)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
     }
+
 }
 
