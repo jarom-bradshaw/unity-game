@@ -2,7 +2,15 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-**/[Ll]ibrary/
+# Ignore all Library folders
+*/[Ll]ibrary
+
+# Explicitly include the Library folder at the root
+!/Library/
+
+# Include the PackageCache folder and the specific com.newtonsoft.json folder
+!/Library/PackageCache/
+!/Library/PackageCache/com.newtonsoft.json/
 **/[Tt]emp/
 **/[Oo]bj/
 **/[Bb]uild/
