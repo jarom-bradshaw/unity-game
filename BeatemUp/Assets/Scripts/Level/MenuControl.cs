@@ -70,6 +70,7 @@ public class MenuControl : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+
     }
 
 }
