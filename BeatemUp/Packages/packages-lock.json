@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.newtonsoft.json": {
-      "version": "https://github.com/PixelWizards/com.newtonsoft.json/blob/master/JsonDotNet/Newtonsoft.Json.dll",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "f434e27dd00a8c6092fbd847b22aef0799e2dd21"
-    },
     "com.unity.ai.navigation": {
       "version": "2.0.5",
       "depth": 0,
