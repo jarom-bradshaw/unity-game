@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.newtonsoft.json": {
-      "version": "https://github.com/PixelWizards/com.newtonsoft.json.git",
+      "version": "https://github.com/PixelWizards/com.newtonsoft.json/tree/master/JsonDotNet",
       "depth": 0,
       "source": "git",
       "dependencies": {},
