@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.newtonsoft.json": "https://github.com/PixelWizards/com.newtonsoft.json/tree/master/JsonDotNet",
+    "com.newtonsoft.json": "https://github.com/PixelWizards/com.newtonsoft.json/blob/master/JsonDotNet/Newtonsoft.Json.dll",
     "com.unity.ai.navigation": "2.0.5",
     "com.unity.collab-proxy": "2.6.0",
     "com.unity.ide.rider": "3.0.31",
