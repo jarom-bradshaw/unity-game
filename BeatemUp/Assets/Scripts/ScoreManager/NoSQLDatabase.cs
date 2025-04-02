@@ -9,7 +9,7 @@ public class NoSQLDatabase
     [System.Serializable]
     public class PlayerScore
     {
-        public string CompletionTime;  // Time to complete the level, stored as a string
+        public float? CompletionTime;  // Time to complete the level, stored as a string
         public string Timestamp;       // Store the time the score was achieved
     }
 
@@ -113,27 +113,44 @@ public class NoSQLDatabase
     }
 
     // Insert a new player score.  Added error handling and checks.
-    public async Task InsertScore(string completionTime)
+    public async Task InsertScore(float? completionTime)
     {
         if (!_isDataLoaded)
         {
             await LoadDatabase(); // Ensure data is loaded before inserting
         }
 
-        if (string.IsNullOrEmpty(completionTime))
+        if (completionTime == null)
         {
             Debug.LogError("Completion time cannot be null or empty.");
             return; // IMPORTANT:  Don't proceed with invalid data.
         }
 
-        PlayerScore newScore = new PlayerScore
+        // Get the current high score (if exists)
+        PlayerScore currentHighScore = _data.Count > 0 ? _data[0] : null;
+
+        // If there's an existing high score, compare it
+        if (currentHighScore != null)
+        {
+            float? storedTime = currentHighScore.CompletionTime; // Now it's a float
+            if (completionTime >= storedTime) return; // Only update if new time is lower
+        }
+
+        // Store the new best time
+        _data.Clear(); // Remove previous high score
+        _data.Add(new PlayerScore
         {
             CompletionTime = completionTime,
-            Timestamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") // Store with timestamp
-        };
+            Timestamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+        });
 
-        _data.Add(newScore); // Add to the in-memory list
-        await SaveDatabase(); // Save the updated data to the file
+        await SaveDatabase();
+    }
+    public float? GetHighScore()
+    {
+        if (!_isDataLoaded) LoadDatabase();
+        
+        return _data.Count > 0 ? _data[0].CompletionTime : null;
     }
 
     // Get all scores.  Returns a copy to prevent external modification of the original data.
@@ -150,35 +167,24 @@ public class NoSQLDatabase
     public List<PlayerScore> GetTopNScores(int n)
     {
         if (!_isDataLoaded)
-        {
-             LoadDatabase();
-        }
-        // Sort a copy to avoid modifying the original data.
-        List<PlayerScore> sortedScores = new List<PlayerScore>(_data);
-        sortedScores.Sort((a, b) =>
-        {
-            // Handle null or empty strings
-            if (string.IsNullOrEmpty(a.CompletionTime))
-                return string.IsNullOrEmpty(b.CompletionTime) ? 0 : 1;
-            if (string.IsNullOrEmpty(b.CompletionTime))
-                return -1;
+    {
+        LoadDatabase();
+    }
 
-            // Try to parse as float
-            if (float.TryParse(a.CompletionTime, out float aTime) && float.TryParse(b.CompletionTime, out float bTime))
-            {
-                return aTime.CompareTo(bTime); // Compare as floats
-            }
-            else
-            {
-                // If parsing fails, compare as strings (lexicographically)
-                return a.CompletionTime.CompareTo(b.CompletionTime);
-            }
-        });
-        if (n > sortedScores.Count)
-        {
-            n = sortedScores.Count; // prevent out of bounds
-        }
-        return sortedScores.GetRange(0, n); // Return the top N
+    // Sort in ascending order (fastest times first)
+    List<PlayerScore> sortedScores = new List<PlayerScore>(_data);
+    sortedScores.Sort((a, b) =>
+    {
+        if (!a.CompletionTime.HasValue) return 1;  // Null values go to the end
+        if (!b.CompletionTime.HasValue) return -1; 
+        return a.CompletionTime.Value.CompareTo(b.CompletionTime.Value);
+    });
+
+    if (n > sortedScores.Count)
+    {
+        n = sortedScores.Count; // prevent out of bounds
+    }
+    return sortedScores.GetRange(0, n); // Return the top N
     }
 
     // Clear all data.  Use with caution!  Added async.
@@ -194,7 +200,7 @@ public class NoSQLDatabase
     }
 
     // Delete a specific score
-    public async Task DeleteScore(string completionTime)
+    public async Task DeleteScore(float completionTime)
     {
         if (!_isDataLoaded)
         {

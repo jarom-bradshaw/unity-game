@@ -7,6 +7,19 @@ public class TimerControl : MonoBehaviour
     private bool isRunning = true;
     [SerializeField] private Transform target;
 
+    NoSQLDatabase database;
+
+    void Start()
+    {
+        database = new NoSQLDatabase("GameDatabase", "HighScores");
+    }
+
+    public async void SaveNewTime(float newTime)
+    {
+        await database.InsertScore(newTime);
+    }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -23,15 +36,22 @@ public class TimerControl : MonoBehaviour
 
     void UpdateTimerDisplay()
     {
+        timerText.text = FindTime();
+    }
+    public string FindTime()
+    {
         int minutes = Mathf.FloorToInt(timeElapsed / 60);
         int seconds = Mathf.FloorToInt(timeElapsed % 60);
         int milliseconds = Mathf.FloorToInt(timeElapsed * 100 % 100);
 
-        timerText.text = $"{minutes:D2}:{seconds:D2}.{milliseconds:D2}";
-    }
-
+        return $"{minutes:D2}:{seconds:D2}.{milliseconds:D2}";
+    } 
     public void StartTimer() => isRunning = true;
-    public void StopTimer() => isRunning = false;
+    public void StopTimer()
+    {
+        isRunning = false;
+        SaveNewTime(timeElapsed);
+    }
     public void ResetTimer()
     {
         timeElapsed = 0f;
