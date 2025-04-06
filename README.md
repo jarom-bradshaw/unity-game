@@ -16,7 +16,6 @@ Jarom Bradshaw
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
 * [Web Site Name](https://docs.unity3d.com/6000.0/Documentation/Manual/UnityManual.html)
 
 # Future Work
