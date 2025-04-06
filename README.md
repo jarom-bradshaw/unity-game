@@ -1,47 +1,26 @@
-# unity-game
-Unity Development Game Project
+# Overview
+This is a game called Office Rush. The goal of the game is to pass through levels as quickly as possible. To move, both the wasd and arrow keys work.
+If you beat the fastest time, it will be recorded and displayed on the main menu.
 
+# Development Environment
+This project was made using Unity, a number of code scripts, and a database
 
-## Getting Started
+The language used was C#. And the libraries used were unity specific.
 
+# Collaborators
 
+Daivd Declid
+Hunter Gundersen
+Jacob Kertesz
+Jarom Bradshaw
 
-**Prerequisites:**
+# Useful Websites
 
-* [Required software/dependencies] 
+{Make a list of websites that you found helpful in this project}
+* [Web Site Name](https://docs.unity3d.com/6000.0/Documentation/Manual/UnityManual.html)
 
+# Future Work
 
-
-**Installation:**
-
-1. Clone this repository: `git clone https://github.com/yourusername/project-name.git`
-
-2. Navigate to the project directory: `cd project-name`
-
-3. Install dependencies: `npm install` 
-
-
-
-## Usage
-
-
-
-**To run the project:**
-
-* `npm start` 
-
-
-
-**Example usage:**
-
-* [A brief explanation of how to use the project with a code snippet if applicable] 
-
-
-
-## License
-
-
-
-This project is licensed under the [License Name] - see the [LICENSE] file for details. 
-
-
+* Improve Enemy navigation so that they can move around barriers.
+* Finish the Pause Menu.
+* Add sound effects.
